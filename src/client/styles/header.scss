@@ -1,0 +1,24 @@
+
+
+$text_header:#123C69;
+$text_med: #53627c;
+
+$red: #ff1e42;
+$darkred: #c3112d;
+$orange: #ff8c00;
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+}
+
+.heading {
+    font-weight: bold;
+    font-size: 3rem;
+    letter-spacing: 0.02em;
+    padding: 0 0 20px 0;
+  }
+
+  .top {
+    color: $text_header;
+  }

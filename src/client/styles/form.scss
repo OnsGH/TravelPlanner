@@ -1,0 +1,113 @@
+$bg_form: #EEE2DC;
+//#bfc5cf;
+$text_light: #fff;
+$text_table:#123C69;
+$bg: #AC3B61;
+
+//#E27D60
+//#C38D9E
+
+form {
+    border: 1px solid #545454;
+    border-radius: 3px;
+    padding: 30px;
+    padding-bottom: 30px;
+    background-color: $bg_form;
+}
+label{
+
+    color: $text_table;
+}
+
+input{
+padding-top: 10px;
+width:30%;
+    background-color:$bg;
+    height: 45px;
+    color: $text_light;
+    text-transform: uppercase;
+    font-weight: bold;
+
+}
+textarea {
+    padding: 5px 20px;
+    width: 100%;
+    line-height: 16px;
+   
+    min-width: 100%;
+    font-style: oblique;
+    margin-top: 20px;
+}
+
+#label__results{
+    font-weight: bold;
+    color: $text_table;
+    
+}
+.form__input{
+
+    padding-bottom: 20px;
+}
+
+table {
+    display: grid;
+    border-collapse: collapse;
+    min-width: 100%;
+    color: $text_table;
+    grid-template-columns: 
+      minmax(150px, 1fr)
+      minmax(150px, 1fr)
+      minmax(150px, 1fr)
+      minmax(150px, 1fr)
+      minmax(150px, 1fr)
+     
+  }
+  
+  thead,
+  tbody,
+  tr {
+    display: contents;
+  }
+  
+  th,
+  td {
+    padding: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+ 
+  }
+  td{
+    text-transform: lowercase;
+    //margin: 50px auto 0px;
+  }
+  
+  th {
+    position: sticky;
+    top: 0;
+    background:$bg;
+    text-align: left;
+    font-weight: normal;
+    font-size: 1.1rem;
+    color: white;
+    position: relative;
+  }
+  
+  th:last-child {
+    border: 0;
+  }
+
+  #msg {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-weight: bold;
+    font-size: medium;
+    letter-spacing: 0.05em;
+    text-align: center;
+    color: $bg;
+    ///$text_table ;
+    padding-bottom: 5px;;
+  }
+
+ 

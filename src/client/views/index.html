@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -13,31 +14,51 @@
     <body>
 
         <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
+            <section class="top">
+                <div class="container">
+                    <h1 class="heading">Sentiment Analysis App</h1>
         </header>
 
         <main>
-            <section>
-                <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
+            <section class="form__input">
+                <form class="" onsubmit="return Client.handleSubmit(event)">
+                    <label>Enter your text to analyse</label>
+                    <textarea id = "name" required rows="3"  placeholder="Insert text to analyse here.."></textarea>
+                    <input type="submit" name="" value="Analyse" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)"/>
                 </form>
             </section>
 
-            <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+            <section class="form__result">
+               <div id = label__results><strong>Results:</strong></div>
+               <span id="msg"></span>
+               <table id="analysis__table">
+                <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Agreement</th>
+                  <th>Subjectivity</th>
+                  <th>Confidence</th>
+                  <th>Irony</th>
+                </tr>
+              </thead>
+                
+                
             </section>
         </main>
 
-        <footer>
-            <p>This is a footer</p>
+     
+            <footer class="footer__page">
+                <div class="ft-main">
+                <div  class="ft-copyright-list ul-no-bullets">
+                    <ul>
+                     
+                      <li>&copy; 2021 Copyright Inc.</li>
+                    </ul>
+                  </div>
+                </div> 
+               
         </footer>
 
     </body>
 </html>
+
