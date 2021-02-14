@@ -37,7 +37,7 @@ function handleSubmit(event) {
     postData(apiUrl, {textToAnalyse : formText})
     .then(function(res) {
         console.log("es.score_tag",res.score_tag) ;
-        Client.displaySentimentAnalysisData(res);
+        Client.displaySentimentAnalysisInfo(res);
     })
     let table = document.querySelector('table');
     table.deleteRow(1);

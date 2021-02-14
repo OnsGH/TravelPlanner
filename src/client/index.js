@@ -1,4 +1,4 @@
-import { displaySentimentAnalysisData } from './js/displaySentimentAnalysisData'
+import { displaySentimentAnalysisInfo } from './js/displaySentimentAnalysisData'
 import{ isEmptyInput } from './js/displaySentimentAnalysisData'
 import { handleSubmit } from './js/formHandler'
 
@@ -13,7 +13,7 @@ import './styles/header.scss'
 //alert("I EXIST")
 
 export {
-    displaySentimentAnalysisData,
+    displaySentimentAnalysisInfo,
     isEmptyInput,
     handleSubmit
 }
