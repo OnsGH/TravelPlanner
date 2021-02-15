@@ -33,8 +33,6 @@ function isEmptyInput(input) {
   const msg = document.getElementById("msg");
   if (inputext === "") {
       msg.textContent = "Please enter your text 😩";
-      let table = document.querySelector("table");
-      table.deleteRow(1);
       return true;
   } else {
       msg.textContent = "";
