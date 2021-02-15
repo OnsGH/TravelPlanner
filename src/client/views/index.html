@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
+        <title>Sentiment Analysis App</title>
         <link rel="stylesheet" href="/styles/resets.css">
         <link rel="stylesheet" href="/styles/base.css">
         <link rel="stylesheet" href="/styles/header.css">
@@ -22,14 +22,14 @@
         <main>
             <section class="form__input">
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <label>Enter your text to analyse</label>
+                    <label id="label__input">Enter your text to analyse</label>
                     <textarea id = "name" required rows="3"  placeholder="Insert text to analyse here.."></textarea>
                     <input type="submit" name="" value="Analyse" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)"/>
                 </form>
             </section>
 
             <section class="form__result">
-               <div id = label__results><strong>Results:</strong></div>
+               <div id = label__results><strong>Results</strong></div>
                <span id="msg"></span>
                <table id="analysis__table">
                 <thead>
@@ -47,7 +47,6 @@
                 
             </section>
         </main>
-
      
             <footer class="footer__page">
                 <div class="ft-main">

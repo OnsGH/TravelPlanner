@@ -1,38 +1,30 @@
-$bg_form: #EEE2DC;
+$bg_form: #eee2dc;
 .footer__page {
-   
-   
-    background-color:$bg_form;
+    background-color: $bg_form;
     padding-top: 50px;
     padding-bottom: 10px;
-  }
-  .ft-main {
+}
+.ft-main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-  }
+}
 
 .ul-no-bullets {
     list-style-type: none;
-  }
-  
-  .ft-copyright {
-    //padding: 0.9375rem 1.875rem;
+}
+
+.ft-copyright {
     background-color: rgb(177, 172, 172);
     color: rgb(158, 152, 152);
-  //  justify-content: center;
-    /* #fff;  #333*/
-  }
-  .ft-copyright-list {
+}
+.ft-copyright-list {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-   justify-content: center;
-  }
-  
-  .ft-copyright-list li {
-   
+    justify-content: center;
+}
+
+.ft-copyright-list li {
     white-space: nowrap;
-  }
-  /* one before the last child */
-  
+}
