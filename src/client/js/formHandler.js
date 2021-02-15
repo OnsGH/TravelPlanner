@@ -10,7 +10,7 @@ function handleSubmit(event) {
     const apiUrl = "http://localhost:8081/sentimentAnalysisApi";
 
     console.log("::: Form Submitted :::");
-    if ((Client.isEmptyInput(formText) === false)&&(rowCount>1)) {
+    if (Client.isEmptyInput(formText) === false) {
         const postData = async (url = "", data = {}) => {
             console.log(data);
             const response = await fetch(url, {
@@ -35,9 +35,12 @@ function handleSubmit(event) {
             console.log("es.score_tag", res.score_tag);
             Client.displaySentimentAnalysisInfo(res);
         });
-        table.deleteRow(1); 
+        
        
     }
+    if (rowCount ===2 )
+    {  console.log("DELETE");
+        table.deleteRow(1); }
 }
 
 export { handleSubmit };
