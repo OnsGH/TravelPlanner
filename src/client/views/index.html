@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Sentiment Analysis App</title>
+        <title>Travel App</title>
         
     </head>
 
@@ -12,50 +12,78 @@
         <header>
             <section class="top">
                 <div class="container">
-                    <h1 class="heading">Sentiment Analysis App</h1>
+                    <h1 class="heading">Travel App</h1>
         </header>
 
         <main>
             <section class="form__input">
-                <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <label id="label__input">Enter your text to analyse</label>
-                    <textarea id = "name" required rows="3"  placeholder="Insert text to analyse here.."></textarea>
-                    <input type="submit" name="" value="Analyse" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)"/>
+                <form class="" onsubmit="Client.getDestinationCoordinates(event)">
+                    <label id="label__input__dest">Enter your destination : </label>
+                    <input id = "input__dest" type="text" placeholder="Enter your destination here" />
+                    <input id = "input__date" type="date" />
+                    <input type="submit" name="" id="input__submit" value="Search" />
                 </form>
             </section>
 
             <section class="form__result">
-               <div id = label__results><strong>Results</strong></div>
-               <span id="msg"></span>
-               <table id="analysis__table">
-                <thead>
-                <tr>
-                  <th>Model</th>
-                  <th>Agreement</th>
-                  <th>Subjectivity</th>
-                  <th>Confidence</th>
-                  <th>Irony</th>
-                </tr>
-              </thead>
-             <tbody></tbody>
-               
-                </table>
+              <span id="msg"></span>
+                <section class="dest__card" id="dest__card">
+                    <ul>
+                      <li><figure>
+                       <img id = "country__image" src="./src/client/media/plane-1.jpg" alt="">
+                         <figcaption id="country__figurecaption"><h3> Welcome !</h3></figcaption>
+                         </figure>
+                         
+                         <div class="card__body">
+                          <div id="days__count"></div>
+                      
+                          
+                          <div class="Weather__info">
+                           <h3  id = "weather__title" hidden>Weather information</h3>
+                            <div id="country__temperature">
+                          
+                            </div>
+                           <div id="content">
+                             
+                             <div id="left">
+                               <div id="wather__img" ></div>
+                              </div>
+                               <div id="right">
+                               <div id="weather__description"> </div>
+                              </div>
+                               </div>
+                        </div>
+                        <div id="temp__prediction">
+                          <h3  id = "temp__prediction__title" hidden>Weather prediction for the next three days</h3>
+                          <table id="temp__table" hidden>
+                            </table>
+                        </div>
+                        </div>
+                      </div>
+                      
+                      <a href="#" id="btn">Save</a> 
+                      </li>
+                      </ul>
                 
             </section>
+            <section class="list main__grid">   
+            </div>
+             </section>
+
         </main>
      
             <footer class="footer__page">
                 <div class="ft-main">
                 <div  class="ft-copyright-list ul-no-bullets">
                     <ul>
-                     
                       <li>&copy; 2021 Copyright Inc.</li>
                     </ul>
                   </div>
                 </div> 
                
         </footer>
-        <script>
+    <!--
+         <script>
             // Check that service workers are supported
             if ('serviceWorker' in navigator) {
                 // Use the window load event to keep the page load performant
@@ -64,6 +92,7 @@
                 });
             }
            </script>
+      -->
     </body>
 </html>
 

@@ -1,5 +1,8 @@
-$bg_main: #edc7b7;
-$text_dark: #1e2432;
+$bg_main: #5085A5;
+
+//
+$text_dark:#fff;
+//#1e2432;
 
 body {
     display: flex;
@@ -24,5 +27,5 @@ section.form__result {
 body {
     font: 1rem/1.3 "Roboto", sans-serif;
     background: $bg_main;
-    color: $text_dark;
+    color: $bg_main;
 }

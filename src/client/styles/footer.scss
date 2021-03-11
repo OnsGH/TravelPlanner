@@ -1,8 +1,10 @@
 $bg_form: #eee2dc;
 .footer__page {
     background-color: $bg_form;
-    padding-top: 50px;
-    padding-bottom: 10px;
+   // padding-top: 50px;
+   // padding-bottom: 10px;
+    height: 30px;
+    margin-top: -30px;
 }
 .ft-main {
     display: flex;
