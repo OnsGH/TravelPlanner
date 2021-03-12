@@ -45,9 +45,9 @@ API Documentation https://pixabay.com/api/docs/
 ### Step 2: Environment Variables
 Next we need to create .env file and enter your own API credentials:
 
-GEONAMES_USERNAME = 
-WEATHERBIT_API_KEY = 
-PIXABAY_API_KEY =
+- GEONAMES_USERNAME = 
+- WEATHERBIT_API_KEY = 
+- PIXABAY_API_KEY =
 
 
 ### Step 3 : Using the API
