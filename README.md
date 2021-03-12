@@ -1,3 +1,11 @@
+
+# Project overview
+
+The Travel app is a  the final capstone project for Udacity's Front End Web Developer Nanodegree program. This project aims to give us the opportunity to put all of the skills that we learned into one project to build our own custom travel app.
+<p align="center">
+<img  width="300" height="350" src="screenshot.png">
+</p>
+
 # Project Instructions
 
 
@@ -20,24 +28,27 @@ The goal of this project is to give you practice with:
 ## Setting up the API
 
 ### Step 1: Signup for an API key
-First, you will need to go [here](https://developer.aylien.com/signup). Signing up will get you an API key. Don't worry, at the time of this course, the API is free to use up to 1000 requests per day or 333 intensive requests. It is free to check how many requests you have remaining for the day.
+First, you will need to go  Signing up will get you an API key.
+- GeoNames
+https://www.geonames.org/export/web-services.html
+
+Example : http://api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&lang=de&username=demo
+
+- Weatherbit API
+https://www.weatherbit.io/account/dashboard
+
+API Documentation https://www.weatherbit.io/api
+
+- Pixabay
+API Documentation https://pixabay.com/api/docs/
 
 ### Step 2: Environment Variables
-Next we need to declare our API keys, which will look something like this:
-```
-API_ID=**************************
-API_KEY=**************************
-```
+Next we need to create .env file and enter your own API credentials:
 
-```
-const dotenv = require('dotenv');
-dotenv.config();
-```
-- [ ] Reference variables you created in the .env file by putting ```process.env``` in front of it, an example might look like this:
-```
-console.log(`Your API key is ${process.env.API_KEY}`);
-```
-```
+- GEONAMES_USERNAME = 
+- WEATHERBIT_API_KEY = 
+- PIXABAY_API_KEY =
+
 
 ### Step 3 : Using the API
 
@@ -46,7 +57,12 @@ We're ready to go! The API has a lot of different endpoints
 - Test that the server and form submission work, making sure to also handle error responses if the user input does not match API requirements. 
 - Go back to the web pack config and add the setup for service workers. 
 - Test that the site is now available even when you stop your local server
+## Running the Application
+- npm run build-prod
+  -  npm start
+- npm run test (For the test)
 
-## Deploying
+## Chosen Suggestions to Make My Project Stand Out
+- Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities).
+- Instead of just pulling a single day forecast, pull the forecast for multiple days.
 
-A great step to take with your finished project would be to deploy it!  
