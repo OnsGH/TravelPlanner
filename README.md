@@ -59,7 +59,7 @@ We're ready to go! The API has a lot of different endpoints
 - Test that the site is now available even when you stop your local server
 ## Running the Application
 - npm run build-prod
-  npm start
+  -  npm start
 - npm run test (For the test)
 
 ## Chosen Suggestions to Make My Project Stand Out
