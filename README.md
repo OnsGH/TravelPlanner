@@ -2,7 +2,7 @@
 # Project overview
 
 The Travel app is a  the final capstone project for Udacity's Front End Web Developer Nanodegree program. This project aims to give us the opportunity to put all of the skills that we learned into one project to build our own custom travel app.
-<img align="center" width="200" height="200" src="screenshot.png">
+<img align="center" width="300" height="300" src="screenshot.png">
 
 
 # Project Instructions
