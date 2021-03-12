@@ -13,9 +13,10 @@
             <section class="top">
                 <div class="container">
                     <h1 class="heading">Travel App</h1>
+                    </header>
         </header>
 
-        <main>
+        <main class="">
             <section class="form__input">
                 <form class="" onsubmit="Client.getDestinationCoordinates(event)">
                     <label id="label__input__dest">Enter your destination : </label>
@@ -35,6 +36,7 @@
                          </figure>
                          
                          <div class="card__body">
+                          <div id="departure__day"></div>  
                           <div id="days__count"></div>
                       
                           
@@ -60,8 +62,8 @@
                         </div>
                         </div>
                       </div>
-                      
-                      <a href="#" id="btn">Save</a> 
+                      <input type="submit" name="" id="btn" value="Save"  onclick="Client.saveUI(event)"/>
+                  <!--<a href="#" id="btn">Save</a> --->  
                       </li>
                       </ul>
                 
@@ -82,7 +84,7 @@
                 </div> 
                
         </footer>
-    <!--
+    
          <script>
             // Check that service workers are supported
             if ('serviceWorker' in navigator) {
@@ -92,7 +94,7 @@
                 });
             }
            </script>
-      -->
+      
     </body>
 </html>
 

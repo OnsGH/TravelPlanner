@@ -22,9 +22,7 @@ function getDestinationCoordinates(event) {
 
                 getGeoInfo(geoUrl).then(function (responseData) {
                     console.log("responseData ", responseData);
-                    /***
-                     * UpdateUI
-                     ***/
+                
                     if (responseData.success === false) {
                         console.log("no success");
                         // Error
@@ -32,6 +30,7 @@ function getDestinationCoordinates(event) {
                         if (responseData.countryData.geonames.length == 0) {
                             // success but the country not listed ERROR VERIFY NAME
                             console.log(" success Length 0");
+                            Client.displayErrorCountryName(inputDestCountry);
                         } else {
                             const countryName = responseData.countryData.geonames[0].name;
                             const countryCode = responseData.countryData.geonames[0].countryCode;
@@ -108,20 +107,21 @@ const getCountryDetails = async (countryCode, countryName, countryLng, countryLa
     let icon = ``;
     let weather__icon__lnk = ``;
     let desc = ``;
+    let imgLink = "";
     getCountryImg(imgCountryUrl)
         .then(function (responseData) {
             console.log(responseData);
             if (responseData.success === false) {
                 console.log("no success");
             } else {
-                let imgLink = "";
+                 
                 if (responseData.imgData.hits.length == 0) {
                     console.log(imgLink);
                     imgLink = "./src/client/media/plane-1.jpg";
                 } else {
                     imgLink = responseData.imgData.hits[0].webformatURL;
                 }
-                Client.UpdateUIImage(imgLink, countryName);
+                Client.UpdateUIImage(imgLink, countryName,inputDepDate);
             }
         })
         .then(function (weatherData) {
@@ -132,7 +132,6 @@ const getCountryDetails = async (countryCode, countryName, countryLng, countryLa
                     if (responseCurrentWeatherData.success === false) {
                         console.log("no success");
 
-                        // updateUINoSuccess();
                     } else {
                         console.log("success");
                         temp = responseCurrentWeatherData.currentWeatherData.data[0].temp;
@@ -140,7 +139,7 @@ const getCountryDetails = async (countryCode, countryName, countryLng, countryLa
                         console.log("Icon ", icon);
                         weather__icon__lnk = `https://www.weatherbit.io/static/img/icons/${icon}.png`;
                         desc = responseCurrentWeatherData.currentWeatherData.data[0].weather.description;
-                        Client.UpdateBodyInformation(inputDepDate, countryName, daysToTravel, temp, weather__icon__lnk, desc);
+                        Client.UpdateBodyInformation(imgLink,inputDepDate, countryName, daysToTravel, temp, weather__icon__lnk, desc);
                         localStorage.setItem("departureDay", inputDepDate);
                         localStorage.setItem("countryName", countryName);
                         localStorage.setItem("daysToTravel", daysToTravel);
@@ -160,7 +159,7 @@ const getCountryDetails = async (countryCode, countryName, countryLng, countryLa
                         icon = responseForecastWeatherData.forecastWeatherData.data[daysToTravel].weather.icon;
                         desc = responseForecastWeatherData.forecastWeatherData.data[daysToTravel].weather.description;
                         weather__icon__lnk = `https://www.weatherbit.io/static/img/icons/${icon}.png`;
-                        if (daysToTravel > 13) Client.UpdateBodyInformation(inputDepDate, countryName, daysToTravel, temp, weather__icon__lnk, desc);
+                        if (daysToTravel > 13) Client.UpdateBodyInformation(imgLink,inputDepDate, countryName, daysToTravel, temp, weather__icon__lnk, desc);
                         else {
                             var tempJsonArr = [];
 
@@ -174,7 +173,7 @@ const getCountryDetails = async (countryCode, countryName, countryLng, countryLa
                                     icon: `https://www.weatherbit.io/static/img/icons/${icon}.png`,
                                 });
                             }
-                            Client.UpdateBodyInformation(inputDepDate, countryName, daysToTravel, temp, weather__icon__lnk, desc);
+                            Client.UpdateBodyInformation(imgLink,inputDepDate, countryName, daysToTravel, temp, weather__icon__lnk, desc);
                             Client.displayForecastformation(tempJsonArr, daysToTravel);
                             console.log(tempJsonArr);
                         }
@@ -185,7 +184,7 @@ const getCountryDetails = async (countryCode, countryName, countryLng, countryLa
                 weather__icon__lnk = `./src/client/media/na.svg`;
                 console.log("Icon ", icon);
                 desc = "The weather forecat data is not available ";
-                Client.UpdateBodyInformation(inputDepDate, countryName, daysToTravel, temp, weather__icon__lnk, desc);
+                Client.UpdateBodyInformation(imgLink,inputDepDate, countryName, daysToTravel, temp, weather__icon__lnk, desc);
             }
         });
 };

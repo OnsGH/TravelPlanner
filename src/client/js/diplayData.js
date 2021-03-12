@@ -9,6 +9,11 @@ function isEmptyInput(input) {
   }
 }
 
+function displayErrorCountryName(input) {
+  const msg = document.getElementById("msg");
+  msg.textContent = `${input} is invalid, please enter a valid country name 😩`;
+}
+
 function isNotValideDate(isValid) {
   const msg = document.getElementById("msg");
 
@@ -18,7 +23,7 @@ function isNotValideDate(isValid) {
   } else if (isValid === -1 || isValid === 0) return false;
 }
 
-function UpdateUIImage(imageLink, countryName) {
+function UpdateUIImage(imageLink, countryName, departureDay) {
   const countryImage = document.getElementById("country__image");
   const countryFigureCaption = document.getElementById("country__figurecaption");
   countryImage.src = imageLink;
@@ -27,51 +32,49 @@ function UpdateUIImage(imageLink, countryName) {
   countryFigureCaption.innerHTML = markup__countryName;
 }
 
-function UpdateBodyInformation(departureDay, countryName, daysCount, temp, icon, desc) {
+function UpdateBodyInformation(imageLink, departureDay, countryName, daysCount, temp, icon, desc) {
+  const departure__day = document.getElementById("departure__day");
   const days__count = document.getElementById("days__count");
   const country__temperature = document.getElementById("country__temperature");
   const sup = document.getElementById("sup");
   const weather__icon = document.getElementById("wather__img");
   const weather__description = document.getElementById("weather__description");
 
-  //const weather__icon__lnk = `https://www.weatherbit.io/static/img/icons/${icon}.png` ;
   document.getElementById("weather__title").hidden = false;
   document.getElementById("temp__table").hidden = true;
   document.getElementById("btn").style.display = "inline-block";
-  const markup__daysCount = ` Your trip is  <span  style="color:red"> ${daysCount} </span> days away `;
 
+  const markup__departureDay = `<h3> Departure Day is <span  style="color:red"> ${departureDay} </span>  <h3>`;
+  departure__day.innerHTML = markup__departureDay;
+
+  const markup__daysCount = ` Your trip is   <span  style="color:red"> ${daysCount} </span>  days away `;
   days__count.innerHTML = markup__daysCount;
 
   const markup__temp = `
 <span id="temperature">${Math.round(temp)}
- <sup id="sup">°C</sup>
+<sup id="sup">°C</sup>
  </span>
-         `;
+       `;
   country__temperature.innerHTML = markup__temp;
   // document.getElementById("").appendChild(div);
   const markup__temp__icon = `
-    <figure>
-     <img id="weather__icon" src= ${icon}  alt="">
-    </figure> `;
+  <figure>
+   <img id="weather__icon" src= ${icon}  alt="">
+  </figure> `;
   weather__icon.innerHTML = markup__temp__icon;
   weather__description.innerHTML = desc;
 
+  postData("/addInfoCountry", {
+      imageLink,
+      departureDay,
+      countryName,
+      daysCount,
+      temp,
+      icon,
+      desc,
+  });
+
   let saveTrip = document.getElementById("btn");
-  /* saveTrip.addEventListener(
-       'click',  function () { 
-       // e.preventDefault();
-           postData('/addInfoCountry', {
-           departureDay,
-           countryName,
-           daysCount,
-           temp,
-           icon,
-           desc,
-           
-       });
-       //saveUI();
-     })*/
-  // saveTrip.onclick = saveTripInfo;
 }
 
 function displayForecastformation(tempJsonArr, countDays) {
@@ -84,25 +87,25 @@ function displayForecastformation(tempJsonArr, countDays) {
   }
 
   const markup__temp = `
-   
-    <tr>
-        <td>${tempJsonArr[0].dayName}</td>
-        <td>${tempJsonArr[1].dayName}</td>
-        <td>${tempJsonArr[2].dayName}</td>
-        
-    </tr>
-    <tr>
-        <td><img src="${tempJsonArr[0].icon}"> </td>
-        <td><img src="${tempJsonArr[1].icon}"></td>
-        <td><img src="${tempJsonArr[2].icon}"></td>
-        
-    </tr>
-    <tr>
-        <td>${Math.round(tempJsonArr[0].temp)}°</td>
-        <td>${Math.round(tempJsonArr[1].temp)}°</td>
-        <td>${Math.round(tempJsonArr[2].temp)}°</td>
-        
-    </tr>
+ 
+  <tr>
+      <td>${tempJsonArr[0].dayName}</td>
+      <td>${tempJsonArr[1].dayName}</td>
+      <td>${tempJsonArr[2].dayName}</td>
+      
+  </tr>
+  <tr>
+      <td><img src="${tempJsonArr[0].icon}"> </td>
+      <td><img src="${tempJsonArr[1].icon}"></td>
+      <td><img src="${tempJsonArr[2].icon}"></td>
+      
+  </tr>
+  <tr>
+      <td>${Math.round(tempJsonArr[0].temp)}°</td>
+      <td>${Math.round(tempJsonArr[1].temp)}°</td>
+      <td>${Math.round(tempJsonArr[2].temp)}°</td>
+      
+  </tr>
 
 `;
   weather__prediction.innerHTML = markup__temp;
@@ -131,7 +134,8 @@ const postData = async (url = "", data = {}) => {
   }
 };
 
-const saveUI = async () => {
+const saveUI = async (event) => {
+  event.preventDefault();
   const request = await fetch("/all");
 
   try {
@@ -143,33 +147,33 @@ const saveUI = async () => {
       const div = document.createElement("div");
       div.classList.add("card");
       const markup = `
-  <div class='card__item'>
-  <div class="img">
-  <figure>
-  <img class="country__img" src="./src/client/media/plane-1.jpg" alt="">
-  </figure>
-  </div>
-  <div class="city__name">
-   <span>${allData.countryName}</span>
-   </div>
-  <div class="date">
-  <span>${allData.departureDay}</span>
-  </div>
-  <div class="city__temp">
-  <span>${Math.round(allData.temp)}
-  <sup>°C</sup>
-  </span>
-  </div>
-  <figure>
-  <img class="weather__icon" src=${allData.icon} alt="">
-  <figcaption>${allData.description}</figcaption>
-  </figure>
+<div class='card__item'>
+<div class="img">
+<figure>
+<img class="country__img" src=${allData.imgCountry} alt="">
+</figure>
+</div>
+<div class="city__name">
+ <span>${allData.countryName}</span>
+ </div>
+<div class="date">
+<span>${allData.departureDay}</span>
+</div>
+<div class="city__temp">
+<span>${Math.round(allData.temp)}
+<sup>°C</sup>
+</span>
+</div>
+<figure>
+<img class="weather__icon" src=${allData.icon} alt="">
+<figcaption>${allData.description}</figcaption>
+</figure>
 
 </div>
-          
+        
 </div>
-     
-  
+   
+
 `;
       div.innerHTML = markup;
       savedCard.appendChild(div);
@@ -178,4 +182,4 @@ const saveUI = async () => {
   }
 };
 
-export { isEmptyInput, isNotValideDate, UpdateUIImage, UpdateBodyInformation, displayForecastformation };
+export { isEmptyInput, isNotValideDate, UpdateUIImage, UpdateBodyInformation, displayForecastformation, saveUI, displayErrorCountryName };

@@ -1,10 +1,13 @@
 $bg_form: #eee2dc;
 .footer__page {
-    background-color: $bg_form;
-   // padding-top: 50px;
-   // padding-bottom: 10px;
-    height: 30px;
-    margin-top: -30px;
+    
+    position: relative;
+    background-color:  #276397;
+    padding-top: 3px;
+    padding-bottom: 10px;
+    border-top: 4px double #00887A ;
+    width: 100%;
+    
 }
 .ft-main {
     display: flex;
@@ -16,15 +19,13 @@ $bg_form: #eee2dc;
     list-style-type: none;
 }
 
-.ft-copyright {
-    background-color: rgb(177, 172, 172);
-    color: rgb(158, 152, 152);
-}
+
 .ft-copyright-list {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    color: honeydew;
 }
 
 .ft-copyright-list li {
