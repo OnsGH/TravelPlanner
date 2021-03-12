@@ -1,3 +1,6 @@
+/**
+ *  Test is the destination input is empty or not
+ */
 function isEmptyInput(input) {
   const msg = document.getElementById("msg");
   if (input === "") {
@@ -9,10 +12,17 @@ function isEmptyInput(input) {
   }
 }
 
+/**
+ *  Test is the destination name is correct or not
+ */
 function displayErrorCountryName(input) {
   const msg = document.getElementById("msg");
   msg.textContent = `${input} is invalid, please enter a valid country name 😩`;
 }
+/**
+ *  Test is the user entred a valid departure day
+ *  date entred should be >= System Date
+ */
 
 function isNotValideDate(isValid) {
   const msg = document.getElementById("msg");
@@ -23,6 +33,9 @@ function isNotValideDate(isValid) {
   } else if (isValid === -1 || isValid === 0) return false;
 }
 
+/**
+ *  Display image country
+ */
 function UpdateUIImage(imageLink, countryName, departureDay) {
   const countryImage = document.getElementById("country__image");
   const countryFigureCaption = document.getElementById("country__figurecaption");
@@ -31,6 +44,13 @@ function UpdateUIImage(imageLink, countryName, departureDay) {
 <h3>${countryName}</h3>`;
   countryFigureCaption.innerHTML = markup__countryName;
 }
+
+/**
+ *  Display destination information 
+ **** weather
+ ****  Number of days to travel 
+ *  Post data to the server ==> To display it if the user click on the SAVE button
+ */
 
 function UpdateBodyInformation(imageLink, departureDay, countryName, daysCount, temp, icon, desc) {
   const departure__day = document.getElementById("departure__day");
@@ -56,7 +76,6 @@ function UpdateBodyInformation(imageLink, departureDay, countryName, daysCount, 
  </span>
        `;
   country__temperature.innerHTML = markup__temp;
-  // document.getElementById("").appendChild(div);
   const markup__temp__icon = `
   <figure>
    <img id="weather__icon" src= ${icon}  alt="">
@@ -76,6 +95,11 @@ function UpdateBodyInformation(imageLink, departureDay, countryName, daysCount, 
 
   let saveTrip = document.getElementById("btn");
 }
+
+/**
+ *  Display Forecast weather information of the choosen destination  
+ ****  Display three days forecast
+ */
 
 function displayForecastformation(tempJsonArr, countDays) {
   const weather__prediction = document.getElementById("temp__table");
@@ -133,6 +157,11 @@ const postData = async (url = "", data = {}) => {
       console.log("error", error);
   }
 };
+
+/**
+ *  Display destination information from the server 
+ *  when the user click on save button
+ **/
 
 const saveUI = async (event) => {
   event.preventDefault();

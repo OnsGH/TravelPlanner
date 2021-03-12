@@ -1,5 +1,12 @@
 var moment = require("moment");
 
+
+/**
+ *  Get destination longitude and latitude from 
+ *  geonames API
+ *  Get Api Key from the server
+ */
+
 function getDestinationCoordinates(event) {
     event.preventDefault();
 
@@ -15,7 +22,6 @@ function getDestinationCoordinates(event) {
         fetch("http://localhost:8081/getTravelData")
             .then((response) => response.json())
             .then((keyData) => {
-                // keyData => console.log(keyData)
                 KeyApis = keyData;
                 console.log(keyData.geoNameApiKey);
                 let geoUrl = `http://api.geonames.org/searchJSON?q=${inputDestCountry}&maxRows=1&username=${keyData.geoNameApiKey}`;
@@ -25,11 +31,13 @@ function getDestinationCoordinates(event) {
                 
                     if (responseData.success === false) {
                         console.log("no success");
-                        // Error
                     } else {
+                        // success but the country is not listed 
                         if (responseData.countryData.geonames.length == 0) {
-                            // success but the country not listed ERROR VERIFY NAME
-                            console.log(" success Length 0");
+                            
+                            /* Pull in an image for the country
+                               when the entered location brings up no results
+                            */
                             Client.displayErrorCountryName(inputDestCountry);
                         } else {
                             const countryName = responseData.countryData.geonames[0].name;
@@ -71,7 +79,7 @@ function convertSystemDate(systemDate) {
 
     return [year, month, day].join("-");
 }
-
+// Get geonames api response
 const getGeoInfo = async (geoNameUrl) => {
     try {
         const response = await fetch(geoNameUrl);
@@ -88,7 +96,7 @@ const getGeoInfo = async (geoNameUrl) => {
         return { success: false, error: console.error.message };
     }
 };
-
+//  Count the nmbers of the day tp travel
 export function getNumberOfDays(inputDepDate) {
     const today = new Date();
     var momenttoday = moment(today, "YYYY/MM/DD");
@@ -98,6 +106,7 @@ export function getNumberOfDays(inputDepDate) {
     return days;
 }
 
+// Get destination information and update UI
 const getCountryDetails = async (countryCode, countryName, countryLng, countryLat, inputDepDate, weatherBitApiKey, pixaBayApiKey) => {
     var daysToTravel = getNumberOfDays(inputDepDate);
     let currentWeatherBitUrl = `https://api.weatherbit.io/v2.0/current?lat=${countryLat}&lon=${countryLng}&key=${weatherBitApiKey}&include=minutely`;
@@ -164,7 +173,7 @@ const getCountryDetails = async (countryCode, countryName, countryLng, countryLa
                             var tempJsonArr = [];
 
                             for (var i = 0; i < 3; i++) {
-                                const date = moment(responseForecastWeatherData.forecastWeatherData.data[i + daysToTravel].datetime); // Thursday Feb 2015
+                                const date = moment(responseForecastWeatherData.forecastWeatherData.data[i + daysToTravel].datetime); 
                                 const dayName = moment(date).format("ddd");
                                 const icon = responseForecastWeatherData.forecastWeatherData.data[i + daysToTravel].weather.icon;
                                 tempJsonArr.push({
@@ -206,7 +215,7 @@ const getCountryImg = async (imgCountryUrl) => {
         return { success: false, error: console.error.message };
     }
 };
-
+// Get forecast weather indormation
 const getForecastWeatherInfo = async (forecastWeatherBitUrl) => {
     try {
         const response = await fetch(forecastWeatherBitUrl);
@@ -224,6 +233,7 @@ const getForecastWeatherInfo = async (forecastWeatherBitUrl) => {
     }
 };
 
+// Get current weather indormation
 const getCurrentWeatherInfo = async (currentWeatherBitUrl) => {
     try {
         const response = await fetch(currentWeatherBitUrl);
